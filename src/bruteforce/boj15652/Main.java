@@ -1,24 +1,21 @@
-package bruteforce.boj15649;
+package bruteforce.boj15652;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// https://www.acmicpc.net/problem/15649
+// https://www.acmicpc.net/problem/15652
 public class Main {
     static int n;
     static int m;
     static int[] selected;
-    static int[] used;
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         input();
 
         selected = new int[m + 1];
-        used = new int[n + 1];
-
         execute(1);
         System.out.println(sb.toString());
     }
@@ -30,17 +27,11 @@ public class Main {
             }
             sb.append("\n");
         } else {
-            for (int i = 1; i <= n ; i++) {
-                if (used[i] == 1) {
-                    continue;
-                }
-
+            int start = selected[k-1] == 0 ? 1 : selected[k-1];
+            for (int i = start; i <= n ; i++) {
                 selected[k] = i;
-                used[i] = 1;
-
                 execute(k + 1);
                 selected[k] = 0;
-                used[i] = 0;
             }
         }
     }
