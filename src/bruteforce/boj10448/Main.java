@@ -14,8 +14,8 @@ public class Main {
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
-        input();
         setTriangleNumbers();
+        input();
 
         for (int num : nums) {
             int result = solution(num);
